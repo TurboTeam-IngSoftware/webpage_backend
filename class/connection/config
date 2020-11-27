@@ -1,9 +1,9 @@
 {
     "connection": {
         "server": "localhost",
-        "user": "root",
-        "password": "secret",
-        "database": "restornwc",
+        "user": "pbruckner18",
+        "password": "Bruckner2020*",
+        "database": "pbruckner18",
         "port": "3306"
     }
 }
