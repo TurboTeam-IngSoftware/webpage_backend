@@ -1,6 +1,6 @@
 {
     "connection": {
-        "server": "localhost",
+        "server": "55555",
         "user": "pbruckner18",
         "password": "Bruckner2020*",
         "database": "pbruckner18",
