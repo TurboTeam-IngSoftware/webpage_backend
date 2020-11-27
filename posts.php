@@ -6,7 +6,7 @@ require_once "class/posts.php";
 require_once "class/optionUrl.php";
 
 $_response = new response;
-$_posts = new posts;
+$_posts = new Posts;
 $optionUrl = new optionUrl;
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
