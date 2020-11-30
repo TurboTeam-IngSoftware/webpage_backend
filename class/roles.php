@@ -5,7 +5,7 @@ require_once "response.php";
 
 class Roles extends connection {
 
-    private $table = "Roles";
+    private $table = "roles";
     private $idRole="";
     private $writePer="";
     private $revisionPer="";
