@@ -19,17 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $dataUsers = $_users->listUsers();
         $optionUrl->resDataGet($dataUsers);
     }
-} else if ($_SERVER["REQUEST_METHOD"] == "User") {
-    $UserBody=$optionUrl->getDataURL();
-    $dataArray = $_users->store($UserBody);
+} else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $userBody=$optionUrl->getDataURL();
+    $dataArray = $_users->store($userBody);
     $optionUrl->resDataPOST($dataArray);
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
-    $UserBody=$optionUrl->getDataURL();
-    $dataArray=$_users->update($UserBody);
+    $userBody=$optionUrl->getDataURL();
+    $dataArray=$_users->update($userBody);
     $optionUrl->resDataPOST($dataArray);
 } else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
-    $UserBody=$optionUrl->getDataURL();
-    $dataArray = $_users->delete($UserBody);
+    $userBody=$optionUrl->getDataURL();
+    $dataArray = $_users->delete($userBody);
     $optionUrl->resDataPOST($dataArray);
 } else {
     $optionUrl->reqUnk();
