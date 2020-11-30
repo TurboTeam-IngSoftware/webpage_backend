@@ -3,36 +3,40 @@
 require_once "connection/connection.php";
 require_once "response.php";
 
-class Categories extends connection {
+class Roles extends connection {
 
-    private $table = "categories";
-    private $idCategory="";
-    private $category="";
+    private $table = "Roles";
+    private $idRole="";
+    private $writePer="";
+    private $revisionPer="";
+    private $addUserPer="";
 
-    public function listCategories() {
+    public function listRoles() {
         $query = "SELECT * FROM " . $this->table;
         return parent::getData($query);
     }
 
-    public function getCategory($idCategory) {
-        $query = "SELECT * FROM " . $this->table . " WHERE idCategory = '$idCategory'";
+    public function getRole($idRole) {
+        $query = "SELECT * FROM " . $this->table . " WHERE idRole = '$idRole'";
         return parent::getData($query);
     }
 
     public function store($json){
         $_response= new response();
         $data = json_decode($json,true);
-        if (!isset($data['category'])){
+        if (!isset($data['writePer'])||!isset($data['revisionPer'])||!isset($data['addUserPer'])){
             return $_response->error_400();
         }else{
-            $this->category=$data['category'];
+            $this->writePer=$data['writePer'];
+            $this->revisionPer=$data['revisionPer'];
+            $this->addUserPer=$data['addUserPer'];
 
             $save=$this->saveData();
 
             if ($save){
                 $response=$_response->response;
                 $response["result"]=array(
-                    "idCategory"=>$save
+                    "idRole"=>$save
                 );
                 return $response;
             }else{return $_response->error_500();}
@@ -42,16 +46,18 @@ class Categories extends connection {
     public function update($json){
         $_response=new response();
         $data=json_decode($json,true);
-        if (!isset($data['idCategory'])){
+        if (!isset($data['idRole'])){
             return $_response->error_400();
         }else{
-            $this->idCategory=$data['idCategory'];
-            if (isset($data['category']))$this->category=$data['category'];
+            $this->idRole=$data['idRole'];
+            if (isset($data['writePer']))$this->writePer=$data['writePer'];
+            if (isset($data['revisionPer']))$this->revisionPer=$data['revisionPer'];
+            if (isset($data['addUserPer']))$this->addUserPer=$data['addUserPer'];
             $update=$this->updateData();
             if ($update){
                 $response=$_response->response;
                 $response['result']=array(
-                    "idCategory"=>$this->idCategory
+                    "idRole"=>$this->idRole
                 );
                 return $response;
             }else{
@@ -63,15 +69,15 @@ class Categories extends connection {
     public function delete($json){
         $_response = new response();
         $data=json_decode($json,true);
-        if (!isset($data['idCategory'])){
+        if (!isset($data['idRole'])){
             return $_response->error_400();
         }else{
-            $this->idCategory=$data['idCategory'];
+            $this->idRole=$data['idRole'];
             $destroy=$this->deleteData();
             if ($destroy){
                 $response=$_response->response;
                 $response['result']=array(
-                    "idCategory"=>$this->idCategory
+                    "idRole"=>$this->idRole
                 );
                 return $response;
             }else{
@@ -81,20 +87,20 @@ class Categories extends connection {
     }
 
     private function saveData(){
-        $query ="INSERT INTO ".$this->table." (category)values('".$this->category."')";
-        $save = parent::nonQueryidCategory($query);
+        $query ="INSERT INTO ".$this->table." (writePer,revisionPer,addUserPer)values('".$this->writePer."','".$this->revisionPer."','".$this->addUserPer."')";
+        $save = parent::nonQueryidRole($query);
         if ($save)return $save;
         else return 0;
 
     }
     private function updateData(){
-        $query="category='".$this->category."' WHERE idCategory='".$this->idCategory."'";
+        $query="UPDATE ".$this->table." SET writePer='".$this->writePer."', revisionPer='".$this->revisionPer."', addUserPer='".$this->addUserPer."' WHERE idRole='".$this->idRole."'";
         $update=parent::nonQuery($query);
         if ($update>=1)return $update;
         else return 0;
     }
     private function deleteData(){
-        $query="DELETE FROM ".$this->table." WHERE idCategory='".$this->idCategory."'";
+        $query="DELETE FROM ".$this->table." WHERE idRole='".$this->idRole."'";
         $destroy=parent::nonQuery($query);
         if ($destroy >=1)return $destroy;
         else return 0;

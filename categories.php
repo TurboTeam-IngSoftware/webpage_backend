@@ -12,8 +12,8 @@ $optionUrl = new optionUrl;
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if(isset($_GET["id"])){ //$_GET["page"] verefica si existe una variable en el url
-        $idPost = $_GET['id'];
-        $dataCategories = $_categories->getCategories($idPost);
+        $idCategories = $_GET['id'];
+        $dataCategories = $_categories->getCategories($idCategories);
         $optionUrl->resDataGet($dataCategories);
     }else {
         $dataCategories = $_categories->listCategories();
