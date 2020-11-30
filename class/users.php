@@ -26,7 +26,7 @@ class Users extends connection {
     public function store($json){
         $_response= new response();
         $data = json_decode($json,true);
-        if (!isset($data['email'])||!isset($data['names'])||!isset($data['lastnames'])||!isset($data['password'])||!isset($data['roles']))){
+        if (!isset($data['email'])||!isset($data['names'])||!isset($data['lastnames'])||!isset($data['password'])||!isset($data['roles'])){
             return $_response->error_400();
         }else{
             $this->email=$data['email'];
