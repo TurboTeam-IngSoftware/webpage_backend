@@ -12,8 +12,8 @@ $optionUrl = new optionUrl;
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if(isset($_GET["id"])){ //$_GET["page"] verefica si existe una variable en el url
-        $idPost = $_GET['id'];
-        $dataPhoto = $_photos->getPhotos($idPost);
+        $idPhoto = $_GET['id'];
+        $dataPhoto = $_photos->getPhotos($idPhoto);
         $optionUrl->resDataGet($dataPhoto);
     }else {
         $dataPhoto = $_photos->listPhotos();
