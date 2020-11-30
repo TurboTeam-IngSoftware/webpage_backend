@@ -5,16 +5,16 @@ require_once "response.php";
 
 class Photos extends connection {
 
-    private $table = "posts";
+    private $table = "photos";
     private $idPhoto="";
     private $resourceURL="";
 
-    public function listPosts() {
+    public function listPhotos() {
         $query = "SELECT * FROM " . $this->table;
         return parent::getData($query);
     }
 
-    public function getPost($idPhoto) {
+    public function getPhoto($idPhoto) {
         $query = "SELECT * FROM " . $this->table . " WHERE idPhoto = '$idPhoto'";
         return parent::getData($query);
     }
