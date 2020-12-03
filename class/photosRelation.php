@@ -26,7 +26,7 @@ class PhotosRelation extends connection {
         if (!isset($data['idPost'])||!isset($data['idPhoto'])){
             return $_response->error_400();
         }else{
-            $this->date=$data['idPost'];
+            $this->idPost=$data['idPost'];
             $this->idPhoto=$data['idPhoto'];
 
             $save=$this->saveData();

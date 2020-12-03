@@ -26,7 +26,7 @@ class VideosRelation extends connection {
         if (!isset($data['idPost'])||!isset($data['idVideo'])){
             return $_response->error_400();
         }else{
-            $this->date=$data['idPost'];
+            $this->idPost=$data['idPost'];
             $this->idVideo=$data['idVideo'];
 
             $save=$this->saveData();
