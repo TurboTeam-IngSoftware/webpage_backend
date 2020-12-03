@@ -9,8 +9,12 @@ class Posts extends connection {
     private $idPost="";
     private $title="";
     private $shortDescription="";
+    private $description="";
+    private $author="";
     private $date="";
+    private $photo="";
     private $category="";
+    private $revised="";
 
     public function listPosts() {
         $query = "SELECT * FROM " . $this->table;
@@ -19,19 +23,23 @@ class Posts extends connection {
 
     public function getPost($idPost) {
         $query = "SELECT * FROM " . $this->table . " WHERE idPost = '$idPost'";
-        return parent::getData($query);
+        return parent:: getData($query);
     }
 
     public function store($json){
         $_response= new response();
         $data = json_decode($json,true);
-        if (!isset($data['title'])||!isset($data['shortDescription'])||!isset($data['date'])||!isset($data['category'])){
+        if (!isset($data['title'])||!isset($data['shortDescription'])||!isset($data['description'])||!isset($data['author'])||!isset($data['date'])||!isset($data['photo'])||!isset($data['photo'])||!isset($data['category'])||!isset($data['revised'])){
             return $_response->error_400();
         }else{
             $this->title=$data['title'];
             $this->shortDescription=$data['shortDescription'];
+            $this->description=$data['description'];
+            $this->author=$data['author'];
             $this->date=$data['date'];
+            $this->photo=$data['photo'];
             $this->category=$data['category'];
+            $this->revised=$data['revised'];
 
             $save=$this->saveData();
 
@@ -90,7 +98,7 @@ class Posts extends connection {
     }
 
     private function saveData(){
-        $query ="INSERT INTO ".$this->table." (title,shortDescription,date,category)values('".$this->title."','".$this->shortDescription."','".$this->date."','".$this->category."')";
+        $query ="INSERT INTO ".$this->table." (title,shortDescription,description,author,date,photo,category,revised)values('".$this->title."','".$this->shortDescription."','".$this->description."','".$this->author."','".$this->date."','".$this->photo."','".$this->category."','".$this->revised."')";
         $save = parent::nonQueryidPost($query);
         if ($save)return $save;
         else return 0;
