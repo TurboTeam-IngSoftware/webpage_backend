@@ -23,12 +23,11 @@ class PhotosRelation extends connection {
     public function store($json){
         $_response= new response();
         $data = json_decode($json,true);
-        if (!isset($data['idPost'])||!isset($data['idPhoto'])||!isset($data['idRelation'])){
+        if (!isset($data['idPost'])||!isset($data['idPhoto'])){
             return $_response->error_400();
         }else{
             $this->date=$data['idPost'];
             $this->idPhoto=$data['idPhoto'];
-            $this->idRelation=$data['idRelation'];
 
             $save=$this->saveData();
 
@@ -85,7 +84,7 @@ class PhotosRelation extends connection {
     }
 
     private function saveData(){
-        $query ="INSERT INTO ".$this->table." (idRelation,idPost,idPhoto)values('".$this->idRelation."','".$this->idPost."','".$this->idPhoto."')";
+        $query ="INSERT INTO ".$this->table." (idPost,idPhoto)values('".$this->idPost."','".$this->idPhoto."')";
         $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;

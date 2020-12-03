@@ -23,12 +23,11 @@ class VideosRelation extends connection {
     public function store($json){
         $_response= new response();
         $data = json_decode($json,true);
-        if (!isset($data['idPost'])||!isset($data['idVideo'])||!isset($data['idRelation'])){
+        if (!isset($data['idPost'])||!isset($data['idVideo'])){
             return $_response->error_400();
         }else{
             $this->date=$data['idPost'];
             $this->idVideo=$data['idVideo'];
-            $this->idRelation=$data['idRelation'];
 
             $save=$this->saveData();
 
@@ -85,7 +84,7 @@ class VideosRelation extends connection {
     }
 
     private function saveData(){
-        $query ="INSERT INTO ".$this->table." (idRelation,idPost,idVideo)values('".$this->idRelation."','".$this->idPost."','".$this->idVideo."')";
+        $query ="INSERT INTO ".$this->table." (idPost,idVideo)values('".$this->idPost."','".$this->idVideo."')";
         $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
