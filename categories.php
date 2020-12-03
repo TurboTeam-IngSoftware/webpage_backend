@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if(isset($_GET["id"])){ //$_GET["page"] verefica si existe una variable en el url
         $idCategories = $_GET['id'];
-        $dataCategories = $_categories->getCategories($idCategories);
+        $dataCategories = $_categories->getCategory($idCategories);
         $optionUrl->resDataGet($dataCategories);
     }else {
         $dataCategories = $_categories->listCategories();

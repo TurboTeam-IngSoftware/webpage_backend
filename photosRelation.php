@@ -13,10 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if(isset($_GET["id"])){
         $idRelation = $_GET['id'];
-        $dataPhotosRelation = $_photosRelation->getphotosRelation($idRelation);
+        $dataPhotosRelation = $_photosRelation->getPhotoRelation($idRelation);
         $optionUrl->resDataGet($dataPhotosRelation);
     }else{
-        $dataPhotosRelation = $_photosRelation->listphotosRelation();
+        $dataPhotosRelation = $_photosRelation->listPhotosRelation();
         $optionUrl->resDataGet($dataPhotosRelation);
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {

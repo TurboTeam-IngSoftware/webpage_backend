@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if(isset($_GET["id"])){ //$_GET["page"] verefica si existe una variable en el url
         $idRole = $_GET['id'];
-        $dataRole = $_roles->getRoles($idRole);
+        $dataRole = $_roles->getRole($idRole);
         $optionUrl->resDataGet($dataRole);
     }else {
         $dataRole = $_roles->listRoles();

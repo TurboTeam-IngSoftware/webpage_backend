@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if(isset($_GET["id"])){ //$_GET["page"] verefica si existe una variable en el url
         $idPhoto = $_GET['id'];
-        $dataPhoto = $_photos->getPhotos($idPhoto);
+        $dataPhoto = $_photos->getPhoto($idPhoto);
         $optionUrl->resDataGet($dataPhoto);
     }else {
         $dataPhoto = $_photos->listPhotos();

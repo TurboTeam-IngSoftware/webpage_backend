@@ -13,10 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if(isset($_GET["id"])){ //$_GET["page"] verefica si existe una variable en el url
         $idPost = $_GET['id'];
-        $videoPhoto = $_videos->getvideos($idPost);
+        $videoPhoto = $_videos->getVideo($idPost);
         $optionUrl->resDataGet($videoPhoto);
     }else {
-        $videoPhoto = $_videos->listvideos();
+        $videoPhoto = $_videos->listVideos();
         $optionUrl->resDataGet($videoPhoto);
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {

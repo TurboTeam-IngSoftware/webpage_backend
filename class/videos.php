@@ -14,7 +14,7 @@ class Videos extends connection {
         return parent::getData($query);
     }
 
-    public function getPost($idVideo) {
+    public function getVideo($idVideo) {
         $query = "SELECT * FROM " . $this->table . " WHERE idVideo = '$idVideo'";
         return parent::getData($query);
     }
