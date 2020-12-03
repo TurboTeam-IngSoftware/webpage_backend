@@ -9,7 +9,7 @@ class Roles extends connection {
     private $idRole="";
     private $writePer="";
     private $revisionPer="";
-    private $addUserPer="";
+    private $addUser="";
 
     public function listRoles() {
         $query = "SELECT * FROM " . $this->table;
@@ -24,12 +24,12 @@ class Roles extends connection {
     public function store($json){
         $_response= new response();
         $data = json_decode($json,true);
-        if (!isset($data['writePer'])||!isset($data['revisionPer'])||!isset($data['addUserPer'])){
+        if (!isset($data['writePer'])||!isset($data['revisionPer'])||!isset($data['addUser'])){
             return $_response->error_400();
         }else{
             $this->writePer=$data['writePer'];
             $this->revisionPer=$data['revisionPer'];
-            $this->addUserPer=$data['addUserPer'];
+            $this->addUserPer=$data['addUser'];
 
             $save=$this->saveData();
 
@@ -52,7 +52,7 @@ class Roles extends connection {
             $this->idRole=$data['idRole'];
             if (isset($data['writePer']))$this->writePer=$data['writePer'];
             if (isset($data['revisionPer']))$this->revisionPer=$data['revisionPer'];
-            if (isset($data['addUserPer']))$this->addUserPer=$data['addUserPer'];
+            if (isset($data['addUser']))$this->addUserPer=$data['addUser'];
             $update=$this->updateData();
             if ($update){
                 $response=$_response->response;
@@ -87,14 +87,14 @@ class Roles extends connection {
     }
 
     private function saveData(){
-        $query ="INSERT INTO ".$this->table." (writePer,revisionPer,addUserPer)values('".$this->writePer."','".$this->revisionPer."','".$this->addUserPer."')";
+        $query ="INSERT INTO ".$this->table." (writePer,revisionPer,addUser)values('".$this->writePer."','".$this->revisionPer."','".$this->addUser."')";
         $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
 
     }
     private function updateData(){
-        $query="UPDATE ".$this->table." SET writePer='".$this->writePer."', revisionPer='".$this->revisionPer."', addUserPer='".$this->addUserPer."' WHERE idRole='".$this->idRole."'";
+        $query="UPDATE ".$this->table." SET writePer='".$this->writePer."', revisionPer='".$this->revisionPer."', addUser='".$this->addUser."' WHERE idRole='".$this->idRole."'";
         $update=parent::nonQuery($query);
         if ($update>=1)return $update;
         else return 0;
