@@ -98,8 +98,8 @@ class Posts extends connection {
     }
 
     private function saveData(){
-        $query ="INSERT INTO ".$this->table." (title,shortDescription,description,author,date,photo,category,revised)values('".$this->title."','".$this->shortDescription."','".$this->description."','".$this->author."','".$this->date."','".$this->photo."','".$this->category."','".$this->revised."')";
-        $save = parent::nonQueryidPost($query);
+        $query ="INSERT INTO ".$this->table." (title,shortDescription,description,author,date,photo,category,revised) values('".$this->title."','".$this->shortDescription."','".$this->description."','".$this->author."','".$this->date."','".$this->photo."','".$this->category."','".$this->revised."')";
+        $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
 
