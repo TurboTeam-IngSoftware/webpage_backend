@@ -86,7 +86,7 @@ class PhotosRelation extends connection {
 
     private function saveData(){
         $query ="INSERT INTO ".$this->table." (idRelation,idPost,idPhoto)values('".$this->idRelation."','".$this->idPost."','".$this->idPhoto."')";
-        $save = parent::nonQueryidPost($query);
+        $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
 

@@ -82,7 +82,7 @@ class Categories extends connection {
 
     private function saveData(){
         $query ="INSERT INTO ".$this->table." (category)values('".$this->category."')";
-        $save = parent::nonQueryidCategory($query);
+        $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
 

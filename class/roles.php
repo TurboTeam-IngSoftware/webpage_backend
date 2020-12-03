@@ -88,7 +88,7 @@ class Roles extends connection {
 
     private function saveData(){
         $query ="INSERT INTO ".$this->table." (writePer,revisionPer,addUserPer)values('".$this->writePer."','".$this->revisionPer."','".$this->addUserPer."')";
-        $save = parent::nonQueryidRole($query);
+        $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
 

@@ -94,7 +94,7 @@ class Users extends connection {
 
     private function saveData(){
         $query ="INSERT INTO ".$this->table." (email,names,lastnames,password,roles)values('".$this->email."','".$this->names."','".$this->lastnames."','".$this->password."','".$this->roles."')";
-        $save = parent::nonQueryidUser($query);
+        $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
 

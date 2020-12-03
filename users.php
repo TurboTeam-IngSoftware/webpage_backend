@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userBody=$optionUrl->getDataURL();
     $postBody = file_get_contents("php://input");
-    $data = $_pending->store($postBody);
+    $data = $_users->store($postBody);
 
     header('Content-Type: application/json');
     if(isset($data["result"]["error_id"])) {

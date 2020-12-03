@@ -82,7 +82,7 @@ class Videos extends connection {
 
     private function saveData(){
         $query ="INSERT INTO ".$this->table." (resourceURL)values('".$this->resourceURL."')";
-        $save = parent::nonQueryidVideo($query);
+        $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
 

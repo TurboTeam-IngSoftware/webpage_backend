@@ -86,7 +86,7 @@ class VideosRelation extends connection {
 
     private function saveData(){
         $query ="INSERT INTO ".$this->table." (idRelation,idPost,idVideo)values('".$this->idRelation."','".$this->idPost."','".$this->idVideo."')";
-        $save = parent::nonQueryidPost($query);
+        $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
 
