@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // obtener el body
     $postBody = file_get_contents("php://input");
     
-    $data = $_user->login($postBody);
+    $data = $_user->userLogin($postBody);
     
     // respuesta GET
     header('Content-Type: application/json');

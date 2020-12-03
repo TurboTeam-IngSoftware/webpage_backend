@@ -5,7 +5,7 @@ require_once "response.php";
 
 class Login extends connection {
 
-    public function login($jsonBody) {
+    public function userLogin($jsonBody) {
         $_response = new response;
         $data = json_decode($jsonBody, true);
         if (!isset($data["email"]) || !isset($data["password"])) {
