@@ -49,7 +49,7 @@ class VideosRelation extends connection {
         }else{
             $this->idRelation=$data['idRelation'];
             if (isset($data['idVideo']))$this->idVideo=$data['idVideo'];
-            if (isset($data['idPost']))$this->idRelation=$data['idPost'];
+            if (isset($data['idPost']))$this->idPost=$data['idPost'];
             $update=$this->updateData();
             if ($update){
                 $response=$_response->response;

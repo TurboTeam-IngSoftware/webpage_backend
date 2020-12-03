@@ -49,7 +49,7 @@ class PhotosRelation extends connection {
         }else{
             $this->idRelation=$data['idRelation'];
             if (isset($data['idPhoto']))$this->idPhoto=$data['idPhoto'];
-            if (isset($data['idPost']))$this->idRelation=$data['idPost'];
+            if (isset($data['idPost']))$this->idPost=$data['idPost'];
             $update=$this->updateData();
             if ($update){
                 $response=$_response->response;
