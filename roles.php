@@ -20,9 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $optionUrl->resDataGet($dataRole);
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $RoleBody=$optionUrl->getDataURL();
-    $dataArray = $_roles->store($RoleBody);
-    $optionUrl->resDataPOST($dataArray);
+    $postBody = file_get_contents("php://input");
+    $data = $_roles->store($postBody);
+
+    header('Content-Type: application/json');
+    if(isset($data["result"]["error_id"])) {
+        $responseCode = $data["result"]["error_id"];
+        http_response_code($responseCode);
+    } else {
+        http_response_code(200);
+    }
+    echo json_encode($data);
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $RoleBody=$optionUrl->getDataURL();
     $dataArray=$_roles->update($RoleBody);

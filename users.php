@@ -21,8 +21,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userBody=$optionUrl->getDataURL();
-    $dataArray = $_users->store($userBody);
-    $optionUrl->resDataPOST($dataArray);
+    $postBody = file_get_contents("php://input");
+    $data = $_pending->store($postBody);
+
+    header('Content-Type: application/json');
+    if(isset($data["result"]["error_id"])) {
+        $responseCode = $data["result"]["error_id"];
+        http_response_code($responseCode);
+    } else {
+        http_response_code(200);
+    }
+    echo json_encode($data);
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $userBody=$optionUrl->getDataURL();
     $dataArray=$_users->update($userBody);

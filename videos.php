@@ -20,9 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $optionUrl->resDataGet($videoPhoto);
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $videoBody=$optionUrl->getDataURL();
-    $dataArray = $_videos->store($videoBody);
-    $optionUrl->resDataPOST($dataArray);
+    $postBody = file_get_contents("php://input");
+    $data = $_videos->store($postBody);
+
+    header('Content-Type: application/json');
+    if(isset($data["result"]["error_id"])) {
+        $responseCode = $data["result"]["error_id"];
+        http_response_code($responseCode);
+    } else {
+        http_response_code(200);
+    }
+    echo json_encode($data);
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $videoBody=$optionUrl->getDataURL();
     $dataArray=$_videos->update($videoBody);

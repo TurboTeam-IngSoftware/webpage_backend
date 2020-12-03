@@ -19,10 +19,18 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $dataPhotosRelation = $_photosRelation->listphotosRelation();
         $optionUrl->resDataGet($dataPhotosRelation);
     }
-} else if ($_SERVER["REQUEST_METHOD"] == "PhotosRelation") {
-    $photosRelationBody=$optionUrl->getDataURL();
-    $dataArray = $_photosRelation->store($photosRelationBody);
-    $optionUrl->resDataPhotosRelation($dataArray);
+} else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $postBody = file_get_contents("php://input");
+    $data = $_photosRelation->store($postBody);
+
+    header('Content-Type: application/json');
+    if(isset($data["result"]["error_id"])) {
+        $responseCode = $data["result"]["error_id"];
+        http_response_code($responseCode);
+    } else {
+        http_response_code(200);
+    }
+    echo json_encode($data);
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $photosRelationBody=$optionUrl->getDataURL();
     $dataArray=$_photosRelation->update($photosRelationBody);
