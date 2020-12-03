@@ -14,25 +14,16 @@ class Login extends connection {
         } else {
             $email = $data["email"];
             $password = $data["password"];
-
-            $data = $this->getUserData($email, $password);
+            $query = "SELECT * FROM users WHERE email LIKE '$email' AND password LIKE '$password'";
+            $data = parent::getData($query);
+            
             if ($data) {
-                return 200;
+                // Se encontró el usuario
+                return $data;
             } else {
                 // No se encontró un usuario
                 return $_response->error_request("User does not exist or credentials are incorrect");
             }
-        }
-    }
-
-    private function getUserData($email, $password) {
-        // Obtener cliente con número de telefono y password
-        $query = "SELECT * FROM clientes WHERE email LIKE '$email' AND password LIKE '$password'";
-        $data = parent::getData($query);
-        if (isset($data[0]["idUser"])) {
-            return $data;
-        } else {
-            return 0;
         }
     }
 }
