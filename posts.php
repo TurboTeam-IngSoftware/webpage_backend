@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $postBody = file_get_contents("php://input");
-    $data = $_pending->store($postBody);
+    $data = $_posts->store($postBody);
 
     header('Content-Type: application/json');
     if(isset($data["result"]["error_id"])) {
