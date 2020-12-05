@@ -34,7 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     echo json_encode($data);
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $userBody=$optionUrl->getDataURL();
-    $dataArray=$_users->update($userBody);
+    $putBody = file_get_contents("php://input");
+    $dataArray=$_users->update($putBody);
     $optionUrl->resDataPOST($dataArray);
 } else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
     $userBody=$optionUrl->getDataURL();
