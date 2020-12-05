@@ -5,7 +5,6 @@ require_once "class/response.php";
 
 class optionUrl
 {
-
     function getDataURL(){
         return file_get_contents("php://input");
     }

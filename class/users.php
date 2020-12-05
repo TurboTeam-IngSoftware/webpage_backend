@@ -59,8 +59,8 @@ class Users extends connection {
             if (isset($data['lastnames']))$this->lastnames=$data['lastnames'];
             if (isset($data['password']))$this->password=$data['password'];
             if (isset($data['roles']))$this->roles=$data['roles'];
-            $uplastnames=$this->uplastnamesData();
-            if ($uplastnames){
+            $update=$this->updateData();
+            if ($update){
                 $response=$_response->response;
                 $response['result']=array(
                     "idUser"=>$this->idUser
