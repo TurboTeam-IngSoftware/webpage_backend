@@ -34,14 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     echo json_encode($data);
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     $userBody=$optionUrl->getDataURL();
-    $dataArray=$_users->update($userBody);
-    $optionUrl->resDataPOST($dataArray);
+    $putBody = file_get_contents("php://input");
+    $dataArray=$_users->update($putBody);
 } else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
     $userBody=$optionUrl->getDataURL();
-    $dataArray = $_users->delete($userBody);
-    $optionUrl->resDataPOST($dataArray);
+    $deleteBody = file_get_contents("php://input");
+    $dataArray = $_users->delete($deleteBody);
 } else {
     $optionUrl->reqUnk();
 }
-
-?>
