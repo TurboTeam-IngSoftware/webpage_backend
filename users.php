@@ -38,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $dataArray=$_users->update($putBody);
     $optionUrl->resDataPOST($dataArray);
 } else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
-    $userBody=$optionUrl->getDataURL();
-    $deleteBody = file_get_contents("php://input");
-    $dataArray = $_users->delete($deleteBody);
+    $postBody=$optionUrl->getDataURL();
+    $dataArray = $_users->delete($postBody);
+    $optionUrl->resDataPOST($dataArray);
 } else {
     $optionUrl->reqUnk();
 }
