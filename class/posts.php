@@ -30,7 +30,7 @@ class Posts extends connection {
     public function store($json){
         $_response= new response();
         $data = json_decode($json,true);
-        if (!isset($data['title'])||!isset($data['shortDescription'])||!isset($data['description'])||!isset($data['author'])||!isset($data['date'])||!isset($data['photo'])||!isset($data['category'])||!isset($data['revised'])){
+        if (!isset($data['title'])||!isset($data['shortDescription'])||!isset($data['description'])||!isset($data['author'])||!isset($data['date'])||!isset($data['photo'])||!isset($data['category'])||!isset($data['revised'])||!isset($data['video'])){
             return $_response->error_400();
         }else{
             $this->title=$data['title'];
