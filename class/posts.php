@@ -15,6 +15,7 @@ class Posts extends connection {
     private $photo="";
     private $category="";
     private $revised="";
+    private $video="";
 
     public function listPosts() {
         $query = "SELECT * FROM " . $this->table;
@@ -29,7 +30,7 @@ class Posts extends connection {
     public function store($json){
         $_response= new response();
         $data = json_decode($json,true);
-        if (!isset($data['title'])||!isset($data['shortDescription'])||!isset($data['description'])||!isset($data['author'])||!isset($data['date'])||!isset($data['photo'])||!isset($data['photo'])||!isset($data['category'])||!isset($data['revised'])){
+        if (!isset($data['title'])||!isset($data['shortDescription'])||!isset($data['description'])||!isset($data['author'])||!isset($data['date'])||!isset($data['photo'])||!isset($data['photo'])||!isset($data['category'])||!isset($data['revised'])||!isset($data['video'])){
             return $_response->error_400();
         }else{
             $this->title=$data['title'];
@@ -40,6 +41,7 @@ class Posts extends connection {
             $this->photo=$data['photo'];
             $this->category=$data['category'];
             $this->revised=$data['revised'];
+            $this->video=$data['video'];
 
             $save=$this->saveData();
 
@@ -64,6 +66,7 @@ class Posts extends connection {
             if (isset($data['shortDescription']))$this->shortDescription=$data['shortDescription'];
             if (isset($data['date']))$this->date=$data['date'];
             if (isset($data['category']))$this->category=$data['category'];
+            if (isset($data['video']))$this->video=$data['video'];
             $update=$this->updateData();
             if ($update){
                 $response=$_response->response;
@@ -98,14 +101,14 @@ class Posts extends connection {
     }
 
     private function saveData(){
-        $query ="INSERT INTO ".$this->table." (title,shortDescription,description,author,date,photo,category,revised) values('".$this->title."','".$this->shortDescription."','".$this->description."','".$this->author."','".$this->date."','".$this->photo."','".$this->category."','".$this->revised."')";
+        $query ="INSERT INTO ".$this->table." (title,shortDescription,description,author,date,photo,category,revised,video) values('".$this->title."','".$this->shortDescription."','".$this->description."','".$this->author."','".$this->date."','".$this->photo."','".$this->category."','".$this->revised."','".$this->video.")";
         $save = parent::nonQueryId($query);
         if ($save)return $save;
         else return 0;
 
     }
     private function updateData(){
-        $query="UPDATE ".$this->table." SET title='".$this->title."', shortDescription='".$this->shortDescription."', date='".$this->date."', category='".$this->category."' WHERE idPost='".$this->idPost."'";
+        $query="UPDATE ".$this->table." SET title='".$this->title."', shortDescription='".$this->shortDescription."', description='".$this->date."', author='".$this->author."', date='".$this->date."', photo='".$this->photo."', category='".$this->category."', revised='".$this->revised."', video='".$this->video."' WHERE idPost='".$this->idPost."'";
         $update=parent::nonQuery($query);
         if ($update>=1)return $update;
         else return 0;
