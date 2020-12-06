@@ -64,8 +64,12 @@ class Posts extends connection {
             $this->idPost=$data['idPost'];
             if (isset($data['title']))$this->title=$data['title'];
             if (isset($data['shortDescription']))$this->shortDescription=$data['shortDescription'];
+            if (isset($data['description']))$this->description=$data['description'];
+            if (isset($data['author']))$this->author=$data['author'];
             if (isset($data['date']))$this->date=$data['date'];
+            if (isset($data['photo']))$this->photo=$data['photo'];
             if (isset($data['category']))$this->category=$data['category'];
+            if (isset($data['revised']))$this->revised=$data['revised'];
             if (isset($data['video']))$this->video=$data['video'];
             $update=$this->updateData();
             if ($update){
