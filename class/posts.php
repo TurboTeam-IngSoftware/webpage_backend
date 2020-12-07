@@ -112,7 +112,7 @@ class Posts extends connection {
 
     }
     private function updateData(){
-        $query="UPDATE ".$this->table." SET title='".$this->title."', shortDescription='".$this->shortDescription."', description='".$this->date."', author='".$this->author."', date='".$this->date."', photo='".$this->photo."', category='".$this->category."', revised='".$this->revised."', video='".$this->video."' WHERE idPost='".$this->idPost."'";
+        $query="UPDATE ".$this->table." SET title='".$this->title."', shortDescription='".$this->shortDescription."', description='".$this->description."', author='".$this->author."', date='".$this->date."', photo='".$this->photo."', category='".$this->category."', revised='".$this->revised."', video='".$this->video."' WHERE idPost='".$this->idPost."'";
         $update=parent::nonQuery($query);
         if ($update>=1)return $update;
         else return 0;
