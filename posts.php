@@ -1,4 +1,3 @@
-
 <?php
 
 require_once "class/response.php";
@@ -10,7 +9,6 @@ $_posts = new Posts;
 $optionUrl = new optionUrl;
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
     if(isset($_GET["id"])){
         $idPost = $_GET['id'];
         $dataPosts = $_posts->getPost($idPost);
@@ -42,5 +40,4 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 } else {
     $optionUrl->reqUnk();
 }
-
 ?>

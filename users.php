@@ -10,7 +10,6 @@ $_users = new Users;
 $optionUrl = new optionUrl;
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
     if(isset($_GET["id"])){
         $idUser = $_GET['id'];
         $dataUsers = $_users->getUser($idUser);
@@ -23,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $userBody=$optionUrl->getDataURL();
     $postBody = file_get_contents("php://input");
     $data = $_users->store($postBody);
-
     header('Content-Type: application/json');
     if(isset($data["result"]["error_id"])) {
         $responseCode = $data["result"]["error_id"];

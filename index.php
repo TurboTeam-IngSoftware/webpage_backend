@@ -6,4 +6,4 @@ $connection = new connection;
 
 ?>
 
-Index
+<h1>Plataforma Educativa del BCB</h1>
