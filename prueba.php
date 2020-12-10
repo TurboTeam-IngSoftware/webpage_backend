@@ -6,4 +6,4 @@ $connection = new connection;
 
 ?>
 
-<h1>Plataforma Educativa del BCB</h1>
+<h1>Esta es una prueba 2</h1>
