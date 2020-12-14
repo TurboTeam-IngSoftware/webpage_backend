@@ -13,10 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --prefer-dist --no-progress --no-suggest
+    - uses: actions/checkout@v1
+    - uses: michaelw90/PHP-Lint@master
     
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
