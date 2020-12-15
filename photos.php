@@ -12,7 +12,7 @@ if (isset($_POST['submit'])){
     $fileActualExt = strtolower(end($fileExt));
 
     $allowed = array('jpg', 'jpeg', 'png');
-    if (in_array($fileActualExt, $allowed)) {
+    //if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0){
           $fileNameNew = uniqid('', true).".".$fileActualExt; 
           $fileDestination = 'webpage_backend/storage/images/posts/'.$fileNameNew
@@ -21,8 +21,7 @@ if (isset($_POST['submit'])){
         }else{
             echo "ocurrio un error"
         }
-    }else {
+    /*}else {
         echo "Formato no permitido"
-    }
+    }*/
 }
-//Subir imagenes
