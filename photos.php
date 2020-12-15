@@ -15,7 +15,7 @@ if (isset($_POST['submit'])){
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0){
           $fileNameNew = uniqid('', true).".".$fileActualExt; 
-          $fileDestination = 'webpage_backend/storage/images/products'.$fileNameNew
+          $fileDestination = 'webpage_backend/storage/images/posts/'.$fileNameNew
           move_uploaded_file($fileTmpName, $fileDestination);
           echo "Imagen subida con exito"
         }else{
