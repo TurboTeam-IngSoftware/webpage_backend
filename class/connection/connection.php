@@ -39,7 +39,7 @@ class connection {
         $results = $this->connection->query($query);
         $resultArray = array();
         foreach ($results as $key) {
-            $resultArray[] = $key;
+            $resultArray[] = utf8_decode($key);
         }
         return $resultArray;
     }
