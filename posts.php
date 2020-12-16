@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: text/html; charset=UTF-8');
 require_once "class/response.php";
 require_once "class/posts.php";
 require_once "class/optionUrl.php";
@@ -7,8 +7,6 @@ require_once "class/optionUrl.php";
 $_response = new response;
 $_posts = new Posts;
 $optionUrl = new optionUrl;
-
-header("Content-Type: text/html;charset=utf-8");
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if(isset($_GET["id"])){

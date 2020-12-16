@@ -1,5 +1,5 @@
-
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 
 require_once "class/response.php";
 require_once "class/users.php";
