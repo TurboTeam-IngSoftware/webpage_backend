@@ -20,6 +20,7 @@ class connection {
         }
 
         $this->connection = new mysqli($this->server, $this->user, $this->password, $this->database, $this->port);
+        mysqli_set_charset($this->connection,"utf8");
 
         if ($this->connection->connect_errno) {
             echo "Connection fail";
