@@ -8,6 +8,8 @@ $_response = new response;
 $_posts = new Posts;
 $optionUrl = new optionUrl;
 
+header("Content-Type: text/html;charset=utf-8");
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if(isset($_GET["id"])){
         $idPost = $_GET['id'];
