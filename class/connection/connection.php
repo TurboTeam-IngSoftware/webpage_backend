@@ -36,10 +36,10 @@ class connection {
 
     public function getData($query) {
         // Ejecución de query
-        $results = $this->connection->query($query);
+        $results = utf8_decode($this->connection->query($query));
         $resultArray = array();
         foreach ($results as $key) {
-            $resultArray[] = utf8_decode($key);
+            $resultArray[] = $key;
         }
         return $resultArray;
     }
