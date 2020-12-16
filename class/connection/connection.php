@@ -20,7 +20,6 @@ class connection {
         }
 
         $this->connection = new mysqli($this->server, $this->user, $this->password, $this->database, $this->port);
-        $this->connection = new mysqli_query("SET posts 'utf8'");
 
         if ($this->connection->connect_errno) {
             echo "Connection fail";
